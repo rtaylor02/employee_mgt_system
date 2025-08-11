@@ -40,7 +40,7 @@ A full-stack **Spring Boot 3** application for managing employee records, featur
 
 * Java 17+
 * Maven
-* MySQL running locally or remotely
+* MySQL running locally or remotely on RDS
 * AWS account (for Parameter Store integration)
 
 ### Installation & Run
@@ -51,7 +51,7 @@ git clone https://github.com/yourusername/employee-crud-demo.git
 cd employee-crud-demo
 
 # Configure MySQL & AWS credentials in application.properties or Parameter Store
-spring.datasource.url=jdbc:mysql://localhost:3306/employee_directory
+spring.datasource.url=jdbc:mysql://localhost:3306/employee_db
 spring.datasource.username=YOUR_DB_USER
 spring.datasource.password=YOUR_DB_PASSWORD
 
