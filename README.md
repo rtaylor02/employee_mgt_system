@@ -29,7 +29,8 @@ A full-stack **Spring Boot 3** application for managing employee records, featur
 
 ## 📷 Screenshots
 
-*(To be added: Add screenshots of the app UI here for visuals)*
+![list_of_employees](./assets/list_of_employees.png)
+![employee_details](./assets/employee_details.png)
 
 ---
 
