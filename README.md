@@ -29,7 +29,7 @@ A full-stack **Spring Boot 3** application for managing employee records, featur
 
 ## 🏗️ Architecture Diagram
 
-![architecture_diagram](./assets/employeemgtsystem.png)
+![architecture_diagram](./assets/employeemgtsystem_sm.png)
 
 ---
 
