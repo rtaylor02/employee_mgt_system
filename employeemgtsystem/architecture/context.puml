@@ -1,0 +1,42 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam rectangle {
+  BackgroundColor<<UI>> LightBlue
+  BackgroundColor<<Controller>> LightGreen
+  BackgroundColor<<Service>> LightYellow
+  BackgroundColor<<Repository>> LightPink
+  BackgroundColor<<AWS>> Wheat
+  BackgroundColor<<DB>> LightGray
+  BackgroundColor<<User>> LightCyan
+}
+
+actor "End User" <<User>>
+
+node "AWS Elastic Load Balancer" <<AWS>> {
+}
+
+node "AWS Elastic Beanstalk" <<AWS>> {
+  rectangle "Thymeleaf Templates" <<UI>>
+  rectangle "EmployeeController" <<Controller>>
+  rectangle "EmployeeService" <<Service>>
+  rectangle "EmployeeRepository (JPA)" <<Repository>>
+}
+
+cloud "AWS Systems Manager\nParameter Store" <<AWS>> {
+  folder "Config Parameters" as ParamStore
+}
+
+cloud "AWS RDS" <<AWS>> {
+  database "MySQL" as RDS_DB
+}
+
+"End User" -> "AWS Elastic Load Balancer" : HTTP(S) Requests
+"AWS Elastic Load Balancer" -> "Thymeleaf Templates" : Routes Traffic
+
+"Thymeleaf Templates" --> "EmployeeController" : HTTP Requests
+"EmployeeController" --> "EmployeeService" : Business Logic
+"EmployeeService" --> "EmployeeRepository (JPA)" : CRUD Operations
+"EmployeeRepository (JPA)" -> RDS_DB : SQL Queries
+
+"AWS Elastic Beanstalk" -> ParamStore : Reads Config & Secrets
+@enduml
